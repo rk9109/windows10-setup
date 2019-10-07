@@ -79,32 +79,32 @@ Remove-Bloatware
 # Enable WSL
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 
+# Install Ubuntu 18.04
+Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1804 -OutFile ~/Ubuntu.appx -UseBasicParsing
+Add-AppxPackage -Path ~/Ubuntu.appx
+del ~/Ubuntu.appx
+
 Function Install-Git {
     choco install -y git -params '"/GitAndUnixToolsOnPath"'
     RefreshEnv
 }
 
 Function Install-Utilities {
-    cup --cacheLocation="$ChocoCachePath" 7zip
-    cup --cacheLocation="$ChocoCachePath" curl
-    cup --cacheLocation="$ChocoCachePath" wget
-    cup --cacheLocation="$ChocoCachePath" greenshot
+    choco upgrade --cacheLocation="$ChocoCachePath" 7zip
+    choco upgrade --cacheLocation="$ChocoCachePath" curl
+    choco upgrade --cacheLocation="$ChocoCachePath" wget
+    choco upgrade --cacheLocation="$ChocoCachePath" greenshot
 }
 
 Function Install-DevelopmentTools {
-    cup --cacheLocation="$ChocoCachePath" atom
-    cup --cacheLocation="$ChocoCachePath" vscode
-    cup --cacheLocation="$ChocoCachePath" nodejs
-    cup --cacheLocation="$ChocoCachePath" miniconda3
-    cup --cacheLocation="$ChocoCachePath" docker-desktop
-    cup --cacheLocation="$ChocoCachePath" microsoft-windows-terminal
+    choco upgrade --cacheLocation="$ChocoCachePath" vcxsrv
 }
 
 Function Install-Applications {
-    cup --cacheLocation="$ChocoCachePath" googlechrome
-    cup --cacheLocation="$ChocoCachePath" slack
-    cup --cacheLocation="$ChocoCachePath" discord
-    cup --cacheLocation="$ChocoCachePath" bitwarden
+    choco upgrade --cacheLocation="$ChocoCachePath" googlechrome
+    choco upgrade --cacheLocation="$ChocoCachePath" slack
+    choco upgrade --cacheLocation="$ChocoCachePath" discord
+    choco upgrade --cacheLocation="$ChocoCachePath" bitwarden
 }
 
 # Install Packages
